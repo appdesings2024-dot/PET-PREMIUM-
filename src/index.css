@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", serif;
+  
+  --color-primary: #2D7D46;
+  --color-highlight: #F59E0B;
+  --color-text-main: #1C2B1E;
+  --color-text-secondary: #6B7280;
+  --color-bg-hero-from: #F0FDF4;
+  --color-bg-hero-to: #FFFBEB;
+  --color-bg-alt: #F0FDF4;
+  --color-card-border: rgba(45, 125, 70, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-text-main bg-bg-alt antialiased;
+  }
+}
