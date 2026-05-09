@@ -70,32 +70,35 @@ const TestimonialCarousel = () => {
   return (
     <div className="relative max-w-4xl mx-auto px-4">
       <div className="overflow-hidden py-10">
-        <motion.div 
-          className="flex gap-6"
-          animate={{ x: `-${currentIndex * 100}%` }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        <div 
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {testimonials.map((test, idx) => (
-            <motion.div 
+            <div 
               key={idx} 
-              className="min-w-full md:min-w-full bg-bg-alt p-8 rounded-[30px] border-l-8 border-primary shadow-[0_10px_30px_rgba(34,197,94,0.05)] flex flex-col text-left"
+              className="min-w-full px-2"
             >
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-highlight fill-highlight" />)}
-              </div>
-              <p className="text-text-main italic mb-8 leading-relaxed flex-grow text-lg md:text-xl">"{test.text}"</p>
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200/50">
-                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border-2 border-primary/10">
-                  <User className="text-primary/40 w-8 h-8" />
+              <div className="bg-bg-alt p-8 md:p-12 rounded-[40px] border-l-8 border-primary shadow-[0_10px_40px_rgba(34,197,94,0.08)] flex flex-col items-center text-center">
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-highlight fill-highlight" />)}
                 </div>
-                <div>
-                  <div className="font-black text-text-main uppercase tracking-tight">{test.name}</div>
-                  <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
+                <p className="text-text-main italic mb-10 leading-relaxed text-xl md:text-2xl font-medium px-4">
+                  "{test.text}"
+                </p>
+                <div className="flex flex-col items-center gap-4 pt-6 border-t border-gray-200/50 w-full max-w-xs">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-primary/10">
+                    <User className="text-primary/30 w-10 h-10" />
+                  </div>
+                  <div>
+                    <div className="font-black text-text-main uppercase tracking-tight text-lg">{test.name}</div>
+                    <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       <div className="flex justify-center gap-4 mt-4">
