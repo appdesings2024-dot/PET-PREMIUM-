@@ -19,13 +19,112 @@ import {
   ArrowRight, 
   ShoppingBag, 
   PhoneCall, 
-  AlertCircle 
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  User
 } from 'lucide-react';
 
 const CHECKOUT_BASIC_URL = "https://pay.wiapy.com/69fd354cc2ab2347eb1a45bf";
 const CHECKOUT_PREMIUM_URL = "https://pay.wiapy.com/69fd367ec2ab2347eb1ab465";
 
-// Reusable Components
+// Restored Bonus Section and FAQ Components
+const TestimonialCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const testimonials = [
+    { 
+      name: "Mariana Costa", 
+      dog: "Bento (Golden Retriever)", 
+      text: "O Bento vivia com alergia e coceira. Depois que comecei o cardápio, em 3 semanas o pelo dele brilhou como nunca. E as receitas são muito simples!"
+    },
+    { 
+      name: "Ricardo Oliveira", 
+      dog: "Lola (Vira-lata/SRD)", 
+      text: "Eu achava que ia gastar mais, mas na verdade economizei muito comparado com ração super premium que ela comia. É muito prático e ela ama."
+    },
+    { 
+      name: "Ana Beatriz", 
+      dog: "Mel (Shih Tzu)", 
+      text: "Atendimento nota mil e o material é excelente. A Mel era muito seletiva, agora limpa o prato em segundos. É nítido como ela está mais feliz."
+    },
+    { 
+      name: "Juliana Mendes", 
+      dog: "Thor (Bulldog Francês)", 
+      text: "Sempre tive medo de dar comida caseira, mas o guia explica tudo bem. O Thor parou de ter gases e as fezes estão muito melhores."
+    },
+    { 
+      name: "Carlos Souza", 
+      dog: "Bob (Poodle)", 
+      text: "Bob já está velhinho e não queria comer ração. Com a alimentação natural ele recuperou o apetite e está muito mais ativo. Recomendo!"
+    },
+    { 
+      name: "Larissa Viana", 
+      dog: "Luna (Labrador)", 
+      text: "A praticidade das receitas me surpreendeu. Consigo cozinhar pra semana toda em pouco tempo e a Luna fica esperando ansiosa."
+    }
+  ];
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
+  return (
+    <div className="relative max-w-4xl mx-auto px-4">
+      <div className="overflow-hidden py-10">
+        <motion.div 
+          className="flex gap-6"
+          animate={{ x: `-${currentIndex * 100}%` }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          {testimonials.map((test, idx) => (
+            <motion.div 
+              key={idx} 
+              className="min-w-full md:min-w-full bg-bg-alt p-8 rounded-[30px] border-l-8 border-primary shadow-[0_10px_30px_rgba(34,197,94,0.05)] flex flex-col text-left"
+            >
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-highlight fill-highlight" />)}
+              </div>
+              <p className="text-text-main italic mb-8 leading-relaxed flex-grow text-lg md:text-xl">"{test.text}"</p>
+              <div className="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border-2 border-primary/10">
+                  <User className="text-primary/40 w-8 h-8" />
+                </div>
+                <div>
+                  <div className="font-black text-text-main uppercase tracking-tight">{test.name}</div>
+                  <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-4">
+        <button 
+          onClick={prev}
+          className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md active:scale-95"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={next}
+          className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md active:scale-95"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+      
+      <div className="flex justify-center gap-2 mt-6">
+        {testimonials.map((_, idx) => (
+          <button 
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${currentIndex === idx ? 'bg-primary w-6' : 'bg-gray-300'}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 const Button = ({ children, variant = 'primary', size = 'lg', className = '', onClick }: any) => {
   const baseStyles = "inline-flex items-center justify-center font-bold transition-all duration-300 rounded-[20px] active:scale-95 cursor-pointer";
   const variants: any = {
@@ -89,9 +188,9 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen font-sans selection:bg-primary/10 selection:text-primary">
       {/* 1. URGENCY BAR */}
-      <div className="bg-highlight text-white py-2 px-4 text-center text-sm md:text-base font-bold tracking-wider">
+      <div className="bg-highlight text-white py-2 px-4 text-center text-sm md:text-base font-bold tracking-wider uppercase">
         <div className="flex items-center justify-center gap-2">
-          <span>🐾 MAIS DE 1.200 TUTORES JÁ TRANSFORMARAM A ALIMENTAÇÃO DO PET</span>
+          <span>🔥 PROMOÇÃO VALIDA SOMENTE PARA HOJE!</span>
         </div>
       </div>
 
@@ -245,73 +344,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* NEW: SWEEPSTAKES SECTION (Sorteio Especial) */}
-      <section className="py-20 bg-[#0F172A] text-white overflow-hidden relative">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <motion.div {...fadeIn} className="text-center mb-16">
-              <span className="inline-block px-6 py-2 bg-highlight text-white font-black rounded-full text-base mb-6 animate-bounce shadow-xl">
-                🎁 Comprou? Já está concorrendo!
-              </span>
-              <h2 className="font-serif text-4xl md:text-6xl font-black mb-4 leading-tight italic">
-                SORTEIO ESPECIAL
-              </h2>
-              <p className="text-xl md:text-2xl text-blue-100 font-medium max-w-3xl mx-auto">
-                Todo mês sorteamos um <span className="text-highlight font-bold underline italic">Kit Mimo Completo</span> pro cão sortudo do mês.
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div {...fadeIn} className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[30px] border border-white/20 shadow-2xl">
-                <h3 className="font-serif text-3xl font-bold mb-8 text-highlight transition-all">O kit inclui:</h3>
-                <ul className="space-y-6">
-                  {[
-                    { icon: "🦺", text: "Coleira personalizada com o nome do seu cão" },
-                    { icon: "🦴", text: "Petiscos naturais selecionados" },
-                    { icon: "🧸", text: "Brinquedo interativo" },
-                    { icon: "🛏️", text: "Caminha quentinha e confortável" }
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-5 text-xl font-medium group">
-                      <span className="text-4xl group-hover:scale-125 transition-transform">{item.icon}</span>
-                      <span className="text-blue-50">{item.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="text-center lg:text-left space-y-8">
-                <div className="space-y-4">
-                  <div className="bg-white/5 border-l-4 border-highlight p-6 rounded-r-2xl">
-                    <div className="text-2xl font-bold flex items-center gap-3">
-                      <CheckCircle2 className="text-highlight w-8 h-8" />
-                      Cada compra = 1 número da sorte
-                    </div>
-                  </div>
-                  <div className="bg-primary/20 border-l-4 border-primary p-6 rounded-r-2xl ring-2 ring-primary/30">
-                    <div className="text-3xl font-black text-white flex items-center gap-3 italic">
-                      <Star className="text-highlight fill-highlight w-10 h-10" />
-                      Plano Premium = 2 números
-                    </div>
-                    <p className="text-primary font-bold mt-2 ml-12">(Dobra sua chance de ganhar! 🔥)</p>
-                  </div>
-                </div>
-
-                <div className="pt-6 space-y-4">
-                  <div className="flex items-center gap-4 text-lg text-blue-200">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">🎁</div>
-                    <p>Participe do sorteio exclusivo do <span className="text-white font-bold italic">Kit Mimo Completo</span></p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* Decorative elements */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-highlight/10 rounded-full blur-[120px]" />
-      </section>
-
       {/* 5. BONUS SECTION (Premium Only) */}
       <section className="py-20 bg-[#FFFBEB]">
         <div className="container mx-auto px-4">
@@ -343,57 +375,15 @@ export default function App() {
 
       {/* 6. SOCIAL PROOF (Testimonials) - MOVED BEFORE PRICING */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div {...fadeIn} className="text-center mb-16">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div {...fadeIn} className="mb-16">
              <h2 className="font-sans text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter">
                Depoimentos de quem <span className="text-primary italic">já mudou a vida</span> do seu cão
              </h2>
              <p className="text-text-secondary max-w-2xl mx-auto text-lg">Pessoas reais que abandonaram a ração industrial e viram a saúde do pet disparar em poucos dias.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                name: "Mariana Costa", 
-                dog: "Bento (Golden Retriever)", 
-                text: "O Bento vivia com alergia e coceira. Depois que comecei o cardápio, em 3 semanas o pelo dele brilhou como nunca. E as receitas são muito simples e dão resultado real de verdade!", 
-                avatar: "👩‍💻"
-              },
-              { 
-                name: "Ricardo Oliveira", 
-                dog: "Lola (Vira-lata/SRD)", 
-                text: "Eu achava que ia gastar mais, mas na verdade economizei muito comparado com ração super premium que ela comia. É muito prático e ela ama cada refeição.", 
-                avatar: "👨‍💼"
-              },
-              { 
-                name: "Ana Beatriz", 
-                dog: "Mel (Shih Tzu)", 
-                text: "Atendimento nota mil e o material é excelente. A Mel era muito seletiva, agora limpa o prato em segundos. É nítido como ela está mais disposta e feliz no dia a dia.", 
-                avatar: "👩‍🌾"
-              }
-            ].map((test, idx) => (
-              <motion.div 
-                key={idx} 
-                {...fadeIn} 
-                transition={{ delay: idx * 0.1 }}
-                className="bg-bg-alt p-8 rounded-[30px] border-l-8 border-primary shadow-[0_10px_30px_rgba(34,197,94,0.05)] h-full flex flex-col"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-highlight fill-highlight" />)}
-                </div>
-                <p className="text-text-main italic mb-8 leading-relaxed flex-grow text-lg">"{test.text}"</p>
-                <div className="flex items-center gap-4 pt-4 border-t border-gray-200/50">
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-3xl shadow-sm border-2 border-primary/10">
-                    {test.avatar}
-                  </div>
-                  <div>
-                    <div className="font-black text-text-main uppercase tracking-tight">{test.name}</div>
-                    <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <TestimonialCarousel />
         </div>
       </section>
 
@@ -447,7 +437,7 @@ export default function App() {
             >
               <div className="bg-white p-10 rounded-[40px] h-full flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-primary text-white py-2 px-10 rounded-bl-[20px] text-xs font-black uppercase tracking-widest animate-pulse">
-                  RECOMENDADO
+                  MAIS COMPRADO
                 </div>
                 
                 <div className="mb-8">
@@ -474,7 +464,7 @@ export default function App() {
                     "<b>Guia VIP de Sintomas</b> de Alerta",
                     "Acesso ao <b>Grupo VIP WhatsApp</b>",
                     "Bônus: Guia de Economia no Mercado",
-                    "<b>2 Números da Sorte</b> para o Sorteio"
+                    "Suporte prioritário via <b>E-mail</b>"
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-text-main font-medium">
                       <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
