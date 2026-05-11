@@ -203,151 +203,81 @@ export default function App() {
       {/* 2. HERO SECTION */}
       <section className="relative overflow-hidden pt-8 pb-16 md:pt-24 md:pb-32 bg-linear-to-br from-bg-hero-from to-bg-hero-to">
         <div className="container mx-auto px-6 relative z-10 text-center">
-          {/* Text Container */}
-          <div className="max-w-4xl mx-auto mb-10 md:mb-16">
+          {/* Main Content Stack */}
+          <div className="max-w-4xl mx-auto flex flex-col items-center gap-10 md:gap-16">
             <motion.div {...fadeIn}>
-              <h1 className="font-sans text-3xl md:text-6xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase">
+              <h1 className="font-sans text-3xl md:text-6xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase text-center">
                 <span className="text-primary">Alimentação natural para cães:</span><br className="hidden md:block" />
                 <span className="text-text-main"> o guia que sua veterinária não te deu</span>
               </h1>
               <p className="text-base md:text-2xl text-text-secondary leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto font-medium">
                 Cardápios prontos, receitas simples e tudo organizado pra você começar hoje — sem medo de errar e sem gastar fortuna.
               </p>
+              
+              {/* Stories Format Video Container - MOVED HERE */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="max-w-[320px] md:max-w-[380px] mx-auto rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-6 border-white bg-white mb-10"
+              >
+                <div className="aspect-[9/16] relative bg-gray-100">
+                  <iframe
+                    src="https://fast.wistia.net/embed/iframe/0s6b4hcast?videoFoam=true"
+                    title="Vídeo de Apresentação"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              </motion.div>
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button variant="primary" className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto">QUERO GARANTIR AGORA</Button>
                 <Button variant="secondary" className="w-full sm:px-10 h-[60px] md:h-auto" onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })}>Conhecer os planos</Button>
               </div>
             </motion.div>
           </div>
-
-          {/* Stories Format Video Container */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-[360px] md:max-w-[400px] mx-auto rounded-[30px] md:rounded-[50px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white bg-white"
-          >
-            <div className="aspect-[9/16] relative bg-gray-100">
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/0s6b4hcast?videoFoam=true"
-                title="Vídeo de Apresentação - Alimentação Natural"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                loading="lazy"
-                className="absolute inset-0 w-full h-full"
-              />
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* 3. PAIN POINTS */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Você já passou por isso?</h2>
-            <div className="w-20 h-1.5 bg-highlight mx-auto rounded-full" />
-          </motion.div>
+      {/* PAIN POINTS REMOVED AS REQUESTED */}
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {[
-              { icon: "❌", text: "Cachorro com alergia, coceira ou problemas de pele que não somem" },
-              { icon: "❌", text: "Seu cão enjoa das rações facilmente e você não sabe o que oferecer" },
-              { icon: "❌", text: "Gasta fortunas em consultas e o problema sempre volta" },
-              { icon: "❌", text: "Se perdeu nas informações conflitantes sobre alimentação natural" },
-              { icon: "❌", text: "Tem medo de errar na dieta e prejudicar a saúde do seu pet" }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx} 
-                {...fadeIn} 
-                transition={{ delay: idx * 0.1 }}
-                className="p-6 bg-white rounded-[12px] shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-card-border hover:border-primary/20 transition-all group"
-              >
-                <div className="text-2xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <p className="text-text-main font-medium leading-relaxed text-sm">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SOLUTION - REDESIGNED */}
-      <section className="py-24 bg-white overflow-hidden">
+      {/* 4. SOLUTION - SUMMARIZED */}
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-20">
-            <h2 className="font-sans text-3xl md:text-5xl lg:text-6xl font-black text-text-main mb-8 leading-[1.1] uppercase tracking-tighter">
-              Apresentamos o único <span className="text-primary italic">Cardápio Natural do Cão</span> totalmente prático
+          <motion.div {...fadeIn} className="max-w-3xl mx-auto mb-12">
+            <h2 className="font-sans text-3xl md:text-5xl font-black text-text-main mb-6 uppercase tracking-tighter">
+              Tudo o que você <span className="text-primary italic">precisa</span>
             </h2>
-            <p className="text-lg md:text-2xl text-text-secondary leading-relaxed font-medium">
-              Você não precisa de nutricionista veterinário caro nem de horas pesquisando. Em minutos você já sabe exatamente o que colocar no prato do seu cão — com segurança e amor.
-            </p>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {[
-              { 
-                title: "Cardápio semanal pronto (7 dias)", 
-                desc: "Todo o planejamento feito para você apenas seguir e ver a saúde do seu pet disparar.",
-                icon: "📅",
-                color: "bg-green-50"
-              },
-              { 
-                title: "Tabela completa pode/não pode", 
-                desc: "Saiba exatamente quais alimentos são seguros e quais são proibidos em segundos.",
-                icon: "✅",
-                color: "bg-amber-50"
-              },
-              { 
-                title: "25 receitas simples e fáceis", 
-                desc: "Ingredientes de mercado. Sem complicação. Seu cão vai limpar o prato todo dia.",
-                icon: "🥣",
-                color: "bg-blue-50"
-              },
-              { 
-                title: "Guia de porções por peso", 
-                desc: "Chega de dúvida. Saiba o peso exato de cada ingrediente para o tamanho do seu pet.",
-                icon: "⚖️",
-                color: "bg-purple-50"
-              },
-              { 
-                title: "Lista de sintomas de alerta", 
-                desc: "Conhecimento preventivo que pode salvar a vida do seu melhor amigo.",
-                icon: "🚨",
-                color: "bg-red-50"
-              },
-              { 
-                title: "Dicas de Economia", 
-                desc: "Bônus: como gastar menos do que você gasta hoje com ração industrial.",
-                icon: "💰",
-                color: "bg-emerald-50"
-              }
+              { title: "7 dias de cardápio", icon: "📅", color: "bg-green-50" },
+              { title: "Guia pode/não pode", icon: "✅", color: "bg-amber-50" },
+              { title: "25 receitas práticas", icon: "🥣", color: "bg-blue-50" },
+              { title: "Porções por peso", icon: "⚖️", color: "bg-purple-50" },
+              { title: "Sintomas de alerta", icon: "🚨", color: "bg-red-50" },
+              { title: "Dicas de economia", icon: "💰", color: "bg-emerald-50" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
                 {...fadeIn}
-                transition={{ delay: idx * 0.1 }}
-                className="group relative p-10 bg-white rounded-[32px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 text-left"
+                transition={{ delay: idx * 0.05 }}
+                className="p-6 bg-bg-alt rounded-[24px] border border-gray-100 flex flex-col items-center hover:shadow-md transition-all"
               >
-                <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform duration-500`}>
+                <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center text-2xl mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="font-sans text-xl font-black text-text-main mb-4 leading-tight uppercase tracking-tight">
+                <h3 className="font-sans text-xs md:text-sm font-black text-text-main uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed text-sm font-medium">
-                  {item.desc}
-                </p>
-                <div className="absolute top-6 right-8 text-xs font-black text-primary/10 tracking-widest uppercase">
-                  ITEM {idx + 1}
-                </div>
               </motion.div>
             ))}
           </div>
-
-          <motion.div {...fadeIn} className="mt-20">
-            <Button size="lg" className="min-w-[320px] text-xl py-6 shadow-3xl">Garantir acesso imediato agora</Button>
-          </motion.div>
         </div>
       </section>
 
