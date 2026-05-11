@@ -34,33 +34,33 @@ const TestimonialCarousel = () => {
   const testimonials = [
     { 
       name: "Mariana Costa", 
-      dog: "Bento (Golden Retriever)", 
-      text: "O Bento vivia com alergia e coceira. Depois que comecei o cardápio, em 3 semanas o pelo dele brilhou como nunca. E as receitas são muito simples!"
+      dog: "Bento (Golden)", 
+      text: "O Bento vivia com alergia. Em 3 semanas o pelo dele brilhou como nunca. Receitas simples que funcionam!"
     },
     { 
       name: "Ricardo Oliveira", 
-      dog: "Lola (Vira-lata/SRD)", 
-      text: "Eu achava que ia gastar mais, mas na verdade economizei muito comparado com ração super premium que ela comia. É muito prático e ela ama."
+      dog: "Lola (SRD)", 
+      text: "Economizei muito comparado com ração super premium. É prático e ela ama cada refeição."
     },
     { 
       name: "Ana Beatriz", 
       dog: "Mel (Shih Tzu)", 
-      text: "Atendimento nota mil e o material é excelente. A Mel era muito seletiva, agora limpa o prato em segundos. É nítido como ela está mais feliz."
+      text: "A Mel era muito seletiva, agora limpa o prato em segundos. Ela está muito mais dispota."
     },
     { 
       name: "Juliana Mendes", 
-      dog: "Thor (Bulldog Francês)", 
-      text: "Sempre tive medo de dar comida caseira, mas o guia explica tudo bem. O Thor parou de ter gases e as fezes estão muito melhores."
+      dog: "Thor (Bulldog)", 
+      text: "O Thor parou de ter gases e as fezes estão muito melhores. O guia explica tudo perfeitamente."
     },
     { 
       name: "Carlos Souza", 
       dog: "Bob (Poodle)", 
-      text: "Bob já está velhinho e não queria comer ração. Com a alimentação natural ele recuperou o apetite e está muito mais ativo. Recomendo!"
+      text: "Bob já está velhinho e recuperou o apetite. Está muito mais ativo e feliz. Recomendo!"
     },
     { 
       name: "Larissa Viana", 
       dog: "Luna (Labrador)", 
-      text: "A praticidade das receitas me surpreendeu. Consigo cozinhar pra semana toda em pouco tempo e a Luna fica esperando ansiosa."
+      text: "Consigo cozinhar pra semana toda em pouco tempo. Praticidade nota dez pro meu dia a dia."
     }
   ];
 
@@ -68,30 +68,30 @@ const TestimonialCarousel = () => {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <div className="relative max-w-4xl mx-auto px-4">
-      <div className="overflow-hidden py-10">
+    <div className="relative max-w-4xl mx-auto px-2">
+      <div className="overflow-hidden py-6">
         <div 
-          className="flex transition-transform duration-500 ease-in-out"
+          className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {testimonials.map((test, idx) => (
             <div 
               key={idx} 
-              className="min-w-full px-2"
+              className="min-w-full px-1"
             >
-              <div className="bg-bg-alt p-8 md:p-12 rounded-[40px] border-l-8 border-primary shadow-[0_10px_40px_rgba(34,197,94,0.08)] flex flex-col items-center text-center">
-                <div className="flex gap-1 mb-6">
+              <div className="bg-bg-alt p-6 md:p-10 rounded-[32px] border-l-4 md:border-l-8 border-primary shadow-sm flex flex-col items-center text-center">
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-highlight fill-highlight" />)}
                 </div>
-                <p className="text-text-main italic mb-10 leading-relaxed text-xl md:text-2xl font-medium px-4">
+                <p className="text-text-main italic mb-8 leading-relaxed text-lg md:text-xl font-medium">
                   "{test.text}"
                 </p>
-                <div className="flex flex-col items-center gap-4 pt-6 border-t border-gray-200/50 w-full max-w-xs">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-primary/10">
-                    <User className="text-primary/30 w-10 h-10" />
+                <div className="flex flex-col items-center gap-3 pt-6 border-t border-gray-200/50 w-full max-w-xs">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-primary/10">
+                    <User className="text-primary/30 w-8 h-8" />
                   </div>
                   <div>
-                    <div className="font-black text-text-main uppercase tracking-tight text-lg">{test.name}</div>
+                    <div className="font-black text-text-main uppercase tracking-tight text-base">{test.name}</div>
                     <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
                   </div>
                 </div>
@@ -101,16 +101,18 @@ const TestimonialCarousel = () => {
         </div>
       </div>
 
-      <div className="flex justify-center gap-4 mt-4">
+      <div className="flex justify-center gap-6 mt-2">
         <button 
           onClick={prev}
-          className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md active:scale-95"
+          aria-label="Anterior"
+          className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button 
           onClick={next}
-          className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md active:scale-95"
+          aria-label="Próximo"
+          className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -121,7 +123,8 @@ const TestimonialCarousel = () => {
           <button 
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${currentIndex === idx ? 'bg-primary w-6' : 'bg-gray-300'}`}
+            aria-label={`Ir para depoimento ${idx + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-primary w-8' : 'bg-gray-200 w-2'}`}
           />
         ))}
       </div>
@@ -198,21 +201,21 @@ export default function App() {
       </div>
 
       {/* 2. HERO SECTION */}
-      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32 bg-linear-to-br from-bg-hero-from to-bg-hero-to">
+      <section className="relative overflow-hidden pt-8 pb-16 md:pt-24 md:pb-32 bg-linear-to-br from-bg-hero-from to-bg-hero-to">
         <div className="container mx-auto px-6 relative z-10 text-center">
           {/* Text Container */}
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-4xl mx-auto mb-10 md:mb-16">
             <motion.div {...fadeIn}>
-              <h1 className="font-sans text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-8 tracking-tighter uppercase">
+              <h1 className="font-sans text-3xl md:text-6xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase">
                 <span className="text-primary">Alimentação natural para cães:</span><br className="hidden md:block" />
                 <span className="text-text-main"> o guia que sua veterinária não te deu</span>
               </h1>
-              <p className="text-lg md:text-2xl text-text-secondary leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
+              <p className="text-base md:text-2xl text-text-secondary leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto font-medium">
                 Cardápios prontos, receitas simples e tudo organizado pra você começar hoje — sem medo de errar e sem gastar fortuna.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <Button variant="primary" className="min-w-[280px] text-xl py-5 shadow-2xl uppercase tracking-tight">QUERO GARANTIR AGORA</Button>
-                <Button variant="secondary" className="px-10" onClick={() => document.getElementById('price')?.scrollIntoView()}>Conhecer os planos</Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button variant="primary" className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto">QUERO GARANTIR AGORA</Button>
+                <Button variant="secondary" className="w-full sm:px-10 h-[60px] md:h-auto" onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })}>Conhecer os planos</Button>
               </div>
             </motion.div>
           </div>
@@ -222,8 +225,8 @@ export default function App() {
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="max-w-[400px] mx-auto rounded-[30px] md:rounded-[50px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border-4 md:border-8 border-white bg-white"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-[360px] md:max-w-[400px] mx-auto rounded-[30px] md:rounded-[50px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white bg-white"
           >
             <div className="aspect-[9/16] relative bg-gray-100">
               <iframe
@@ -231,6 +234,7 @@ export default function App() {
                 title="Vídeo de Apresentação - Alimentação Natural"
                 allow="autoplay; fullscreen"
                 allowFullScreen
+                loading="lazy"
                 className="absolute inset-0 w-full h-full"
               />
             </div>
@@ -461,17 +465,19 @@ export default function App() {
 
                 <ul className="space-y-4 mb-10 text-left w-full flex-grow">
                   {[
-                    "<b>25 Receitas Diversificadas</b> (Sabor absoluto)",
+                    "<b>Cardápio Natural</b> 7 dias",
+                    "<b>25 Receitas</b> Diversificadas",
                     "<b>Calculadora de Porções</b> Automática",
                     "<b>Lista de Compras</b> Inteligente",
                     "<b>Guia VIP de Sintomas</b> de Alerta",
                     "Acesso ao <b>Grupo VIP WhatsApp</b>",
-                    "Bônus: Guia de Economia no Mercado",
-                    "Suporte prioritário via <b>E-mail</b>"
+                    "🎁 <b>BÔNUS: SOS Cachorro</b> — Guia de Emergências em Casa",
+                    "🎁 <b>BÔNUS: Cão Ansioso</b> — Guia do Tutor Desesperado",
+                    "🏆 <b>Concorre ao Kit Mimo Mensal</b> — Coleira + Petisco + Brinquedo + Caminha"
                   ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-text-main font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span dangerouslySetInnerHTML={{ __html: item }} />
+                    <li key={idx} className="flex items-start gap-4 text-text-main font-medium py-1">
+                      <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                      <span dangerouslySetInnerHTML={{ __html: item }} className="text-base md:text-lg leading-snug" />
                     </li>
                   ))}
                 </ul>
@@ -544,7 +550,7 @@ export default function App() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">
-              <h2 className="font-serif text-3xl font-bold text-text-main mb-2">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-text-main mb-2">
                 Saúde de verdade para seu pet agora!
               </h2>
               <p className="text-base text-text-secondary">
@@ -553,12 +559,12 @@ export default function App() {
             </div>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-              <Button variant="secondary" className="w-full sm:w-auto">
+              <Button variant="secondary" className="w-full sm:w-auto h-[56px] md:h-auto">
                 Plano Básico R$ 10,00
               </Button>
               <Button 
                 variant="primary" 
-                className="w-full sm:min-w-[280px]"
+                className="w-full sm:min-w-[280px] h-[64px] md:h-auto"
                 onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
               >
                 QUERO O PREMIUM R$ 19,90
@@ -566,7 +572,7 @@ export default function App() {
             </div>
           </div>
           
-          <div className="mt-12 text-center text-xs text-text-secondary/60">
+          <div className="mt-12 text-center text-[10px] md:text-xs text-text-secondary/60">
             <p>© 2026 Cardápio Natural do Cão. Todos os direitos reservados.</p>
             <p className="mt-1">Este material tem cunho educativo e não substitui consultas clínicas regulares.</p>
           </div>
