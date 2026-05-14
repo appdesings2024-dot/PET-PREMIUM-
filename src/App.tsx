@@ -121,7 +121,7 @@ export default function App() {
   const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
 
   return (
-    <div className="flex flex-col min-h-screen font-sans selection:bg-primary/10 selection:text-primary">
+    <div className="flex flex-col min-h-screen font-sans selection:bg-primary/10 selection:text-primary overflow-x-hidden">
       {/* 1. URGENCY BAR */}
       <div className="bg-highlight text-white py-2 px-4 text-center text-sm md:text-base font-bold tracking-wider uppercase">
         <div className="flex items-center justify-center gap-2">
@@ -424,9 +424,9 @@ export default function App() {
                     <p className="text-text-secondary text-xs italic">🛡️ Garantia de 14 dias. Teste sem risco.</p>
                   </div>
                   
-                  <Button 
+                    <Button 
                     variant="primary" 
-                    className="w-full py-5 shadow-2xl flex items-center justify-center h-auto animate-bounce-subtle"
+                    className="w-full py-5 shadow-2xl flex items-center justify-center h-auto"
                     onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
                   >
                     <span className="text-lg md:text-xl uppercase">🔥 QUERO ACESSAR AGORA MESMO</span>
