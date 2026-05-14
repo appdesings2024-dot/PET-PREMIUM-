@@ -35,32 +35,52 @@ const TestimonialCarousel = () => {
     { 
       name: "Mariana Costa", 
       dog: "Bento (Golden)", 
-      text: "O Bento vivia com alergia. Em 3 semanas o pelo dele brilhou como nunca. Receitas simples que funcionam!"
+      text: "Eu estava desesperada com as alergias do Bento. Gastava fortunas em shampoo medicado e nada resolvia. Em 3 semanas trocando a ração pelas receitas naturais, o pelo dele brilhou como nunca e ele parou de se coçar. Mudou nossas vidas!"
     },
     { 
       name: "Ricardo Oliveira", 
       dog: "Lola (SRD)", 
-      text: "Economizei muito comparado com ração super premium. É prático e ela ama cada refeição."
+      text: "Fiquei surpreso com a economia. Eu achava que comida natural era caro, mas gasto menos que a ração super premium que ela comia. É extremamente prático organizar a semana e a Lola limpa o prato em segundos!" 
     },
     { 
       name: "Ana Beatriz", 
       dog: "Mel (Shih Tzu)", 
-      text: "A Mel era muito seletiva, agora limpa o prato em segundos. Ela está muito mais dispota."
+      text: "A Mel sempre foi muito 'enjoada' para comer, mas agora ela pula de alegria quando vê o pote. Ela está com muito mais disposição nos passeios e o hálito dela melhorou 100%. Recomendo para todo dono cuidadoso."
     },
     { 
       name: "Juliana Mendes", 
       dog: "Thor (Bulldog)", 
-      text: "O Thor parou de ter gases e as fezes estão muito melhores. O guia explica tudo perfeitamente."
+      text: "Quem tem Bulldog sabe o problema dos gases e da pele. O Thor parou de ter aquele cheiro forte e as fezes ficaram firmes e sem odor insuportável. O guia explica tudo de forma tão simples que qualquer um consegue fazer."
     },
     { 
       name: "Carlos Souza", 
       dog: "Bob (Poodle)", 
-      text: "Bob já está velhinho e recuperou o apetite. Está muito mais ativo e feliz. Recomendo!"
+      text: "O Bob já tem 13 anos e tinha perdido o apetite. Com as receitas naturais, ele recuperou a alegria de comer e parece que rejuvenesceu. Está muito mais ativo e feliz. Foi o melhor investimento que fiz para a velhice dele."
     },
     { 
       name: "Larissa Viana", 
       dog: "Luna (Labrador)", 
-      text: "Consigo cozinhar pra semana toda em pouco tempo. Praticidade nota dez pro meu dia a dia."
+      text: "Achei que ia dar muito trabalho, mas o método de cozinha para a semana toda é genial. Em 1 hora no domingo deixo tudo pronto. A Luna emagreceu o que precisava e as taxas nos exames de sangue vieram perfeitas!"
+    },
+    { 
+      name: "Beatriz Nunes", 
+      dog: "Max (Beagle)", 
+      text: "O Max estava obeso e eu não conseguia controlar. Com a calculadora de porções do Premium, finalmente entendi quanto ele precisava comer. Ele perdeu 3kg de forma saudável e parou de pedir comida o tempo todo."
+    },
+    { 
+      name: "Fernando Lima", 
+      dog: "Gaia (Border Collie)", 
+      text: "Como a Gaia é muito ativa, a ração comum não parecia dar conta. Agora ela tem uma energia estável, o pelo está macio e ela parou de lamber as patas por ansiedade. A dieta natural realmente acalmou o sistema dela."
+    },
+    { 
+      name: "Patrícia Rocha", 
+      dog: "Kiko (Pinscher)", 
+      text: "O Kiko tinha muito tártaro e o hálito era difícil. Incrível como a alimentação correta ajudou nisso. Ele é pequeno, então as receitas rendem muito! Me sinto muito mais segura sabendo exatamente o que ele está comendo."
+    },
+    { 
+      name: "Marta Silveira", 
+      dog: "Amora (Cocker)", 
+      text: "Amora tinha otites recorrentes que o veterinário disse que podia ser alimentar. Desde que comecei o cardápio de 7 dias, ela nunca mais teve crise. O guia 'O que pode e o que não pode' fica grudado na minha geladeira!"
     }
   ];
 
@@ -191,12 +211,14 @@ export default function App() {
     transition: { duration: 0.6 }
   };
 
+  const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+
   return (
     <div className="flex flex-col min-h-screen font-sans selection:bg-primary/10 selection:text-primary">
       {/* 1. URGENCY BAR */}
       <div className="bg-highlight text-white py-2 px-4 text-center text-sm md:text-base font-bold tracking-wider uppercase">
         <div className="flex items-center justify-center gap-2">
-          <span>🔥 PROMOÇÃO VALIDA SOMENTE PARA HOJE!</span>
+          <span>🔥 PROMOÇÃO VALIDA SOMENTE PARA HOJE ({today})!</span>
         </div>
       </div>
 
@@ -247,8 +269,13 @@ export default function App() {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button variant="primary" className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto">🔥 QUERO CUIDAR MELHOR DO MEU CÃO</Button>
-                <Button variant="secondary" className="w-full sm:px-10 h-[60px] md:h-auto" onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })}>Conhecer os planos</Button>
+                <Button 
+                  variant="primary" 
+                  className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto"
+                  onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  🔥 QUERO CUIDAR MELHOR DO MEU CÃO
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -288,6 +315,18 @@ export default function App() {
       </section>
       {/* 4. SOLUTION - SUMMARIZED */}
       <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-6 mb-16">
+          <div className="max-w-5xl mx-auto">
+            <a href="https://ibb.co/5ggXxxLP" target="_blank" rel="noopener noreferrer">
+              <img 
+                src="https://i.ibb.co/FLLkqqzF/Chat-GPT-Image-13-de-mai-de-2026-23-20-04.png" 
+                alt="Guia de Alimentação Natural" 
+                className="w-full rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border-8 border-white bg-white hover:opacity-95 transition-opacity"
+                referrerPolicy="no-referrer"
+              />
+            </a>
+          </div>
+        </div>
         <div className="container mx-auto px-6 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
             <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter uppercase">
@@ -380,7 +419,7 @@ export default function App() {
         <div className="container mx-auto px-4">
           <motion.div {...fadeIn} className="text-center mb-20">
             <span className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4 block">Investimento na Saúde</span>
-            <h2 className="font-display text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic text-text-main">⚠️ Oferta promocional válida somente hoje.</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic text-text-main">⚠️ Oferta promocional válida somente hoje ({today}).</h2>
             <p className="text-text-secondary max-w-xl mx-auto text-lg font-bold">Os bônus podem sair do ar a qualquer momento.</p>
           </motion.div>
 
@@ -389,8 +428,8 @@ export default function App() {
             {/* Basic Plan */}
             <motion.div {...fadeIn} className="bg-white p-8 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col hover:border-primary/20 transition-all duration-300 self-center">
               <div className="mb-6">
-                <span className="text-gray-400 font-bold uppercase text-xs tracking-widest block mb-1">Iniciante</span>
-                <h3 className="font-display text-2xl font-black text-text-main uppercase">Plano Básico</h3>
+                <span className="text-gray-400 font-bold uppercase text-xs tracking-widest block mb-1">Plano Básico</span>
+                <h3 className="font-display text-2xl font-black text-text-main uppercase">Guia de Receitas 🥗</h3>
               </div>
               
               <div className="mb-6">
@@ -422,48 +461,48 @@ export default function App() {
               {...fadeIn} 
               className="bg-white p-1 bg-linear-to-br from-primary to-highlight rounded-[42px] shadow-[0_20px_60px_rgba(34,197,94,0.15)] relative scale-105"
             >
-              <div className="bg-white p-6 md:p-10 rounded-[40px] h-full flex flex-col items-center text-center relative overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-primary text-white py-2 px-10 rounded-b-[20px] text-[10px] md:text-xs font-black uppercase tracking-widest animate-pulse whitespace-nowrap">
+              <div className="bg-white p-6 md:p-10 rounded-[40px] h-full flex flex-col items-start text-left relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-white py-2 px-10 rounded-bl-[20px] text-[10px] md:text-xs font-black uppercase tracking-widest animate-pulse whitespace-nowrap">
                   🔥 MAIS ESCOLHIDO PELOS TUTORES
                 </div>
                 
-                <div className="mb-6 mt-8">
+                <div className="mb-6 mt-4">
                   <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Completo + Bônus</span>
                   <h3 className="font-display text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
                 </div>
 
                 <div className="mb-6">
-                  <div className="flex flex-col items-center gap-1 mb-1">
+                  <div className="flex flex-col items-start gap-1 mb-1">
                     <span className="text-gray-400 line-through text-lg font-bold">DE R$ 75,90</span>
                     <span className="text-highlight text-sm font-black uppercase">por apenas</span>
                   </div>
-                  <div className="text-5xl md:text-6xl font-black text-primary flex items-baseline justify-center gap-2 leading-none">
-                    <span className="text-2xl">R$</span>19,90 <span className="text-xl uppercase">HOJE</span>
+                  <div className="text-5xl md:text-6xl font-black text-primary flex items-baseline gap-2 leading-none">
+                    <span className="text-2xl">R$</span>19,90
                   </div>
-                  <p className="text-highlight text-xs font-black mt-3 uppercase tracking-tight flex items-center justify-center gap-2">
+                  <p className="text-highlight text-[10px] md:text-xs font-black mt-3 uppercase tracking-tight flex items-center gap-2">
                     <AlertCircle className="w-3 h-3" />
-                    ⚠️ Oferta promocional + bônus liberados somente hoje
+                    ⚠️ Oferta promocional + bônus liberados somente hoje ({today})
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-3 mb-8">
+                <ul className="space-y-3 mb-8 w-full">
                   {[
                     "Tudo do Plano Básico",
                     "Acesso vitalício",
                     "Atualizações futuras inclusas"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-primary font-bold text-sm">
-                      <CheckCircle2 className="w-4 h-4 fill-primary text-white" />
+                    <li key={idx} className="flex items-center gap-3 text-primary font-bold text-sm uppercase tracking-tight">
+                      <CheckCircle2 className="w-5 h-5 shrink-0" />
                       <span>{item}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
                 <div className="mb-6 w-full">
-                  <h4 className="text-text-main font-black text-xs uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                  <h4 className="text-text-main font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span>🐶</span> O QUE VOCÊ RECEBE NO PREMIUM:
                   </h4>
-                  <ul className="space-y-3 text-center w-full">
+                  <ul className="space-y-4 text-left w-full">
                     {[
                       { icon: "📅", text: "<b>Cardápio Natural Completo</b> — 7 Dias" },
                       { icon: "🥣", text: "<b>35 Receitas Naturais</b> Diversificadas" },
@@ -476,8 +515,8 @@ export default function App() {
                       { icon: "💰", text: "Dicas para <b>economizar</b> na alimentação" },
                       { icon: "✅", text: "Lista completa do que <b>PODE e NÃO PODE</b>" }
                     ].map((item, idx) => (
-                      <li key={idx} className="flex flex-col items-center gap-1 text-text-main font-medium py-0.5">
-                        <span className="text-base">{item.icon}</span>
+                      <li key={idx} className="flex items-start gap-4 text-text-main font-medium py-0.5 group">
+                        <span className="text-lg shrink-0 mt-0.5 group-hover:scale-125 transition-transform">{item.icon}</span>
                         <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-sm md:text-base leading-tight" />
                       </li>
                     ))}
@@ -485,7 +524,7 @@ export default function App() {
                 </div>
 
                 <div className="mb-8 pt-6 border-t border-gray-100 w-full">
-                  <h4 className="text-highlight font-black text-xs uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                  <h4 className="text-highlight font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span>🎁</span> BÔNUS EXCLUSIVOS DE HOJE:
                   </h4>
                   <ul className="space-y-3">
@@ -495,9 +534,9 @@ export default function App() {
                       { icon: "🏆", text: "<b>Sorteio Mensal:</b> Coleira + Brinquedos..." },
                       { icon: "🎁", text: "<b>BÔNUS SURPRESA</b> PÓS-COMPRA" }
                     ].map((item, idx) => (
-                      <li key={idx} className="flex flex-col items-center gap-1 bg-highlight/5 p-3 rounded-xl border border-highlight/10">
-                        <span className="text-xl">{item.icon}</span>
-                        <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-xs md:text-sm font-bold text-text-main" />
+                      <li key={idx} className="flex items-center gap-4 bg-highlight/5 p-4 rounded-2xl border border-highlight/10 group">
+                        <span className="text-2xl shrink-0 group-hover:scale-110 transition-transform">{item.icon}</span>
+                        <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-sm font-bold text-text-main text-left" />
                       </li>
                     ))}
                   </ul>
@@ -505,7 +544,7 @@ export default function App() {
 
                 <div className="mt-auto w-full">
                   <div className="mb-4 text-center">
-                    <p className="text-text-secondary text-xs italic">🛡️ Garantia de 7 dias. Teste sem risco.</p>
+                    <p className="text-text-secondary text-xs italic">🛡️ Garantia de 14 dias. Teste sem risco.</p>
                   </div>
                   
                   <Button 
@@ -550,7 +589,7 @@ export default function App() {
               />
               <FAQItem 
                 question="E se eu não gostar?" 
-                answer="Fique tranquilo! Você tem uma garantia incondicional de 7 dias. Se por qualquer motivo não sentir que é para você, basta pedir o reembolso." 
+                answer="Fique tranquilo! Você tem uma garantia incondicional de 14 dias. Se por qualquer motivo não sentir que é para você, basta pedir o reembolso." 
               />
             </motion.div>
           </div>
@@ -563,9 +602,9 @@ export default function App() {
           <motion.div {...fadeIn} className="flex items-center gap-6 bg-[#FFFBEB] p-8 rounded-[12px] border border-[#FEF3C7] shadow-sm">
             <span className="text-5xl">🛡️</span>
             <div>
-              <h3 className="font-serif text-xl font-bold mb-1">Garantia de 7 Dias</h3>
+              <h3 className="font-serif text-xl font-bold mb-1">Garantia de 14 Dias</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
-                Você tem 7 dias para testar todo o material. Se o seu cão não amar a comida ou se você não achar prático de verdade, nós devolvemos cada centavo do seu investimento. Sem perguntas, sem burocracia.
+                Você tem 14 dias para testar todo o material. Se o seu cão não amar a comida ou se você não achar prático de verdade, nós devolvemos cada centavo do seu investimento. Sem perguntas, sem burocracia.
               </p>
             </div>
           </motion.div>
