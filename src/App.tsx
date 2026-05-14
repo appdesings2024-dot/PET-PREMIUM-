@@ -264,40 +264,44 @@ export default function App() {
         </div>
       </section>
       {/* 4. SOLUTION - SUMMARIZED */}
-      <section className="py-12 md:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
-            <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter uppercase">
-              🐶 TUDO PARA CUIDAR MELHOR DA SAÚDE DO SEU CÃO ❤️
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-4 tracking-tighter uppercase">
+              O QUE VOCÊ VAI RECEBER NESSE MATERIAL
             </h2>
-          </motion.div>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
-              { title: "Cardápio completo para 7 dias", desc: "Nunca mais fique sem saber o que preparar para seu cão.", icon: "📅", color: "bg-green-50" },
-              { title: "Lista oficial do que PODE e NÃO PODE", desc: "Evite alimentos perigosos e cuide do seu pet com mais segurança.", icon: "✅", color: "bg-amber-50" },
-              { title: "300 receitas práticas e naturais", desc: "Receitas simples, nutritivas e fáceis até para iniciantes.", icon: "🥣", color: "bg-blue-50" },
-              { title: "Quantidade ideal por peso", desc: "Saiba exatamente quanto seu cão deve comer sem exageros.", icon: "⚖️", color: "bg-purple-50" },
-              { title: "Guia de sintomas de alerta", desc: "Aprenda a identificar sinais que muitos donos ignoram.", icon: "🚨", color: "bg-red-50" },
-              { title: "Dicas para economizar na alimentação", desc: "Alimente melhor seu pet sem gastar fortunas no mercado.", icon: "💰", color: "bg-emerald-50" }
+              { title: "Cardápio 7 dias", desc: "Plano organizado para a semana inteira.", icon: "📅" },
+              { title: "Guia Nutricional", desc: "Saiba exatamente o que pode e não pode comer.", icon: "✅" },
+              { title: "300 Receitas", desc: "Preparo rápido, prático e 100% natural.", icon: "🥣" },
+              { title: "Calculadora", desc: "Quantidade ideal baseada no peso do pet.", icon: "⚖️" },
+              { title: "Alerta de Saúde", desc: "Sintomas que você precisa observar rápido.", icon: "🚨" },
+              { title: "Economia", desc: "Alimente melhor gastando menos que ração.", icon: "💰" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
-                {...fadeIn}
-                transition={{ delay: idx * 0.05 }}
-                className="p-8 bg-bg-alt rounded-[32px] border border-gray-100 flex flex-col items-start text-left hover:shadow-xl hover:border-primary/30 hover:scale-[1.02] transition-all group"
+                whileHover={{ y: -5 }}
+                className="p-6 rounded-2xl bg-bg-alt border border-gray-100 flex items-start gap-4 transition-all hover:shadow-md"
               >
-                <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
-                  {item.icon}
+                <span className="text-3xl shrink-0">{item.icon}</span>
+                <div>
+                  <h3 className="font-black text-lg uppercase tracking-tight mb-1">{item.title}</h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
                 </div>
-                <h3 className="font-display text-lg font-black text-text-main mb-2 leading-tight">
-                  {item.title}
-                </h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {item.desc}
-                </p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <a 
+              href={CHECKOUT_BASIC_URL}
+              className="inline-block bg-primary text-white font-black text-xl px-10 py-5 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all uppercase tracking-tight"
+            >
+              Quero Garantir Meu Guia Agora ➜
+            </a>
           </div>
         </div>
       </section>
@@ -358,7 +362,7 @@ export default function App() {
           <motion.div {...fadeIn} className="text-center mb-20">
             <span className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4 block">Investimento na Saúde</span>
             <h2 className="font-display text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic text-text-main">⚠️ Oferta promocional válida somente hoje ({today}).</h2>
-            <p className="text-text-secondary max-w-xl mx-auto text-lg font-bold">Os bônus podem sair do ar a qualquer momento.</p>
+            <p className="text-text-secondary max-w-xl mx-auto text-lg font-bold">Aproveite enquanto a oferta está no ar.</p>
           </motion.div>
 
 
@@ -405,7 +409,7 @@ export default function App() {
                 </div>
                 
                 <div className="mb-6 mt-4">
-                  <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Completo + Bônus</span>
+                  <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Acesso Completo</span>
                   <h3 className="font-display text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
                 </div>
 
@@ -419,7 +423,7 @@ export default function App() {
                   </div>
                   <p className="text-highlight text-[10px] md:text-xs font-black mt-3 uppercase tracking-tight flex items-center gap-2">
                     <AlertCircle className="w-3 h-3" />
-                    ⚠️ Oferta promocional + bônus liberados somente hoje ({today})
+                    ⚠️ Oferta promocional liberada somente hoje ({today})
                   </p>
                 </div>
 
@@ -461,26 +465,7 @@ export default function App() {
                   </ul>
                 </div>
 
-                <div className="mb-8 pt-6 border-t border-gray-100 w-full">
-                  <h4 className="text-highlight font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span>🎁</span> BÔNUS EXCLUSIVOS DE HOJE:
-                  </h4>
-                  <ul className="space-y-3">
-                    {[
-                      { icon: "🚑", text: "<b>SOS Cachorro</b> — Emergências em Casa" },
-                      { icon: "😰", text: "<b>Cão Ansioso</b> — Guia do Tutor Desesperado" },
-                      { icon: "🏆", text: "<b>Sorteio Mensal:</b> Coleira + Brinquedos..." },
-                      { icon: "🎁", text: "<b>BÔNUS SURPRESA</b> PÓS-COMPRA" }
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-4 bg-highlight/5 p-4 rounded-2xl border border-highlight/10 group">
-                        <span className="text-2xl shrink-0 group-hover:scale-110 transition-transform">{item.icon}</span>
-                        <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-sm font-bold text-text-main text-left" />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto w-full">
+                <div className="mt-auto w-full pt-6 border-t border-gray-100">
                   <div className="mb-4 text-center">
                     <p className="text-text-secondary text-xs italic">🛡️ Garantia de 14 dias. Teste sem risco.</p>
                   </div>
@@ -504,7 +489,22 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. FAQ */}
+      {/* 8. GUARANTEE */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <motion.div {...fadeIn} className="flex items-center gap-6 bg-[#FFFBEB] p-8 rounded-[12px] border border-[#FEF3C7] shadow-sm">
+            <span className="text-5xl">🛡️</span>
+            <div>
+              <h3 className="font-serif text-xl font-bold mb-1">Garantia de 14 Dias</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Você tem 14 dias para testar todo o material. Se o seu cão não amar a comida ou se você não achar prático de verdade, nós devolvemos cada centavo do seu investimento. Sem perguntas, sem burocracia.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 9. FAQ */}
       <section className="py-12 md:py-20 bg-bg-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -531,21 +531,6 @@ export default function App() {
               />
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* 9. GUARANTEE */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <motion.div {...fadeIn} className="flex items-center gap-6 bg-[#FFFBEB] p-8 rounded-[12px] border border-[#FEF3C7] shadow-sm">
-            <span className="text-5xl">🛡️</span>
-            <div>
-              <h3 className="font-serif text-xl font-bold mb-1">Garantia de 14 Dias</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Você tem 14 dias para testar todo o material. Se o seu cão não amar a comida ou se você não achar prático de verdade, nós devolvemos cada centavo do seu investimento. Sem perguntas, sem burocracia.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </section>
 
