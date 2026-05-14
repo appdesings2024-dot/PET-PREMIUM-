@@ -24,79 +24,43 @@ const CHECKOUT_BASIC_URL = "https://pay.wiapy.com/69fd354cc2ab2347eb1a45bf";
 const CHECKOUT_PREMIUM_URL = "https://pay.wiapy.com/69fd367ec2ab2347eb1ab465";
 
 // Restored Bonus Section and FAQ Components
-const TestimonialCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const TestimonialsSection = () => {
   const testimonials = useMemo(() => [
     { 
-      img: "https://i.ibb.co/20yWvVWt/FE6-CCBD1-7-B40-4-C83-A162-5-FD83464-CF5-D.png",
+      img: "https://i.ibb.co/QvpdgRgs/Whats-App-Image-2026-05-14-at-18-32-04-1.jpg",
       alt: "Depoimento 1"
     },
     { 
-      img: "https://i.ibb.co/tMFDgjTv/3-E79-BBB6-0-B56-46-C8-9580-38-B39384-CB48.png",
+      img: "https://i.ibb.co/nsMtWHRp/Whats-App-Image-2026-05-14-at-18-32-04.jpg",
       alt: "Depoimento 2"
     },
     { 
-      img: "https://i.ibb.co/PsJFLJm4/5-D9-E4519-AA4-E-4938-8-E75-3-C3-D2818-E450.png",
+      img: "https://i.ibb.co/b51jQCzn/Whats-App-Image-2026-05-14-at-18-32-03.jpg",
       alt: "Depoimento 3"
     }
   ], []);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
   return (
-    <div className="relative max-w-4xl mx-auto px-2">
-      <div className="overflow-hidden py-6">
-        <div 
-          className="flex transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+      {testimonials.map((test, idx) => (
+        <motion.div 
+          key={idx}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: idx * 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-[32px] overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all hover:scale-[1.02]"
         >
-          {testimonials.map((test, idx) => (
-            <div 
-              key={idx} 
-              className="min-w-full px-1"
-            >
-              <div className="bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col items-center text-center">
-                <img 
-                  src={test.img} 
-                  alt={test.alt}
-                  className="w-full h-auto object-contain rounded-[32px]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex justify-center gap-6 mt-2">
-        <button 
-          onClick={prev}
-          aria-label="Anterior"
-          className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button 
-          onClick={next}
-          aria-label="Próximo"
-          className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm active:scale-90"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
-      
-      <div className="flex justify-center gap-2 mt-6">
-        {testimonials.map((_, idx) => (
-          <button 
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            aria-label={`Ir para depoimento ${idx + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-primary w-8' : 'bg-gray-200 w-2'}`}
+          <img 
+            src={test.img} 
+            alt={test.alt}
+            className="w-full h-auto object-contain"
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
           />
-        ))}
-      </div>
+        </motion.div>
+      ))}
     </div>
   );
 };
@@ -352,7 +316,7 @@ export default function App() {
              <p className="text-text-secondary max-w-2xl mx-auto text-lg">Pessoas reais que abandonaram a ração industrial e viram a saúde do pet disparar em poucos dias.</p>
           </motion.div>
 
-          <TestimonialCarousel />
+          <TestimonialsSection />
         </div>
       </section>
 
