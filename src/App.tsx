@@ -10,14 +10,7 @@ import {
   ChevronDown, 
   ShieldCheck, 
   Star, 
-  Clock, 
-  ArrowRight, 
-  ShoppingBag, 
-  PhoneCall, 
-  AlertCircle,
-  ChevronLeft,
-  ChevronRight,
-  User
+  AlertCircle
 } from 'lucide-react';
 
 const CHECKOUT_BASIC_URL = "https://pay.wiapy.com/69fd354cc2ab2347eb1a45bf";
@@ -275,7 +268,7 @@ export default function App() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
              <motion.div {...fadeIn} className="text-center mb-12">
-               <span className="text-highlight font-bold text-lg mb-2 block uppercase tracking-tighter">Exclusivo Premium 💎</span>
+               <span className="text-highlight font-bold text-lg mb-2 block uppercase tracking-tighter">Exclusivo Completo 💎</span>
                <h2 className="font-serif text-3xl md:text-5xl font-bold text-text-main uppercase tracking-tighter">🎁 BÔNUS EXCLUSIVOS LIBERADOS HOJE</h2>
              </motion.div>
 
@@ -374,7 +367,7 @@ export default function App() {
                 
                 <div className="mb-6 mt-4">
                   <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Acesso Completo</span>
-                  <h3 className="font-display text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
+                  <h3 className="font-display text-3xl font-black text-text-main uppercase">Material Completo 💎</h3>
                 </div>
 
                 <div className="mb-6">
@@ -451,15 +444,42 @@ export default function App() {
       </section>
 
       {/* 8. GUARANTEE */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <motion.div {...fadeIn} className="flex items-center gap-6 bg-[#FFFBEB] p-8 rounded-[12px] border border-[#FEF3C7] shadow-sm">
-            <span className="text-5xl">🛡️</span>
-            <div>
-              <h3 className="font-serif text-xl font-bold mb-1">Garantia de 14 Dias</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Você tem 14 dias para testar todo o material. Se o seu cão não amar a comida ou se você não achar prático de verdade, nós devolvemos cada centavo do seu investimento. Sem perguntas, sem burocracia.
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div 
+            {...fadeIn} 
+            className="flex flex-col md:flex-row items-center gap-8 md:gap-16 text-center md:text-left"
+          >
+            <div className="relative shrink-0">
+              <div className="relative w-32 h-32 md:w-44 md:h-44 bg-bg-alt rounded-full flex items-center justify-center text-6xl md:text-7xl border border-gray-100 shadow-sm">
+                🛡️
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+            </div>
+            
+            <div className="flex-1">
+              <span className="inline-block px-4 py-1.5 bg-green-50 text-green-600 text-[11px] font-black uppercase tracking-widest rounded-full mb-6 border border-green-100">
+                Garantia Incondicional • Risco Zero
+              </span>
+              <h3 className="font-display text-3xl md:text-5xl font-black text-text-main mb-6 leading-tight tracking-tighter uppercase italic">
+                Sua satisfação <span className="text-primary">ou 100%</span> do seu dinheiro de volta
+              </h3>
+              <p className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium">
+                "Você tem <b className="text-text-main border-b-2 border-primary/30">14 dias inteiros</b> para testar todo o material. Se o seu cão não amar a nova comida ou se você não achar prático de verdade, nós devolvemos cada centavo via PIX ou estorno. Sem perguntas, sem letras miúdas."
               </p>
+              
+              <div className="mt-8 pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center md:justify-start gap-6 opacity-60">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-xs font-black uppercase tracking-widest text-text-main">Certificado SSL</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-xs font-black uppercase tracking-widest text-text-main">Pagamento Seguro</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -517,7 +537,7 @@ export default function App() {
                 className="w-full sm:min-w-[280px] h-[64px] md:h-auto"
                 onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
               >
-                QUERO O PREMIUM R$ 19,90
+                QUERO O COMPLETO R$ 19,90
               </Button>
             </div>
           </div>
