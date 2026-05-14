@@ -3,12 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   CheckCircle2, 
@@ -31,58 +26,20 @@ const CHECKOUT_PREMIUM_URL = "https://pay.wiapy.com/69fd367ec2ab2347eb1ab465";
 // Restored Bonus Section and FAQ Components
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const testimonials = [
+  const testimonials = useMemo(() => [
     { 
-      name: "Mariana Costa", 
-      dog: "Bento (Golden)", 
-      text: "Eu estava desesperada com as alergias do Bento. Gastava fortunas em shampoo medicado e nada resolvia. Em 3 semanas trocando a ração pelas receitas naturais, o pelo dele brilhou como nunca e ele parou de se coçar. Mudou nossas vidas!"
+      img: "https://i.ibb.co/20yWvVWt/FE6-CCBD1-7-B40-4-C83-A162-5-FD83464-CF5-D.png",
+      alt: "Depoimento 1"
     },
     { 
-      name: "Ricardo Oliveira", 
-      dog: "Lola (SRD)", 
-      text: "Fiquei surpreso com a economia. Eu achava que comida natural era caro, mas gasto menos que a ração super premium que ela comia. É extremamente prático organizar a semana e a Lola limpa o prato em segundos!" 
+      img: "https://i.ibb.co/tMFDgjTv/3-E79-BBB6-0-B56-46-C8-9580-38-B39384-CB48.png",
+      alt: "Depoimento 2"
     },
     { 
-      name: "Ana Beatriz", 
-      dog: "Mel (Shih Tzu)", 
-      text: "A Mel sempre foi muito 'enjoada' para comer, mas agora ela pula de alegria quando vê o pote. Ela está com muito mais disposição nos passeios e o hálito dela melhorou 100%. Recomendo para todo dono cuidadoso."
-    },
-    { 
-      name: "Juliana Mendes", 
-      dog: "Thor (Bulldog)", 
-      text: "Quem tem Bulldog sabe o problema dos gases e da pele. O Thor parou de ter aquele cheiro forte e as fezes ficaram firmes e sem odor insuportável. O guia explica tudo de forma tão simples que qualquer um consegue fazer."
-    },
-    { 
-      name: "Carlos Souza", 
-      dog: "Bob (Poodle)", 
-      text: "O Bob já tem 13 anos e tinha perdido o apetite. Com as receitas naturais, ele recuperou a alegria de comer e parece que rejuvenesceu. Está muito mais ativo e feliz. Foi o melhor investimento que fiz para a velhice dele."
-    },
-    { 
-      name: "Larissa Viana", 
-      dog: "Luna (Labrador)", 
-      text: "Achei que ia dar muito trabalho, mas o método de cozinha para a semana toda é genial. Em 1 hora no domingo deixo tudo pronto. A Luna emagreceu o que precisava e as taxas nos exames de sangue vieram perfeitas!"
-    },
-    { 
-      name: "Beatriz Nunes", 
-      dog: "Max (Beagle)", 
-      text: "O Max estava obeso e eu não conseguia controlar. Com a calculadora de porções do Premium, finalmente entendi quanto ele precisava comer. Ele perdeu 3kg de forma saudável e parou de pedir comida o tempo todo."
-    },
-    { 
-      name: "Fernando Lima", 
-      dog: "Gaia (Border Collie)", 
-      text: "Como a Gaia é muito ativa, a ração comum não parecia dar conta. Agora ela tem uma energia estável, o pelo está macio e ela parou de lamber as patas por ansiedade. A dieta natural realmente acalmou o sistema dela."
-    },
-    { 
-      name: "Patrícia Rocha", 
-      dog: "Kiko (Pinscher)", 
-      text: "O Kiko tinha muito tártaro e o hálito era difícil. Incrível como a alimentação correta ajudou nisso. Ele é pequeno, então as receitas rendem muito! Me sinto muito mais segura sabendo exatamente o que ele está comendo."
-    },
-    { 
-      name: "Marta Silveira", 
-      dog: "Amora (Cocker)", 
-      text: "Amora tinha otites recorrentes que o veterinário disse que podia ser alimentar. Desde que comecei o cardápio de 7 dias, ela nunca mais teve crise. O guia 'O que pode e o que não pode' fica grudado na minha geladeira!"
+      img: "https://i.ibb.co/PsJFLJm4/5-D9-E4519-AA4-E-4938-8-E75-3-C3-D2818-E450.png",
+      alt: "Depoimento 3"
     }
-  ];
+  ], []);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -99,22 +56,14 @@ const TestimonialCarousel = () => {
               key={idx} 
               className="min-w-full px-1"
             >
-              <div className="bg-bg-alt p-6 md:p-10 rounded-[32px] border-l-4 md:border-l-8 border-primary shadow-sm flex flex-col items-center text-center">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-highlight fill-highlight" />)}
-                </div>
-                <p className="text-text-main italic mb-8 leading-relaxed text-lg md:text-xl font-medium">
-                  "{test.text}"
-                </p>
-                <div className="flex flex-col items-center gap-3 pt-6 border-t border-gray-200/50 w-full max-w-xs">
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-primary/10">
-                    <User className="text-primary/30 w-8 h-8" />
-                  </div>
-                  <div>
-                    <div className="font-black text-text-main uppercase tracking-tight text-base">{test.name}</div>
-                    <div className="text-xs font-bold text-primary/60 uppercase tracking-widest">{test.dog}</div>
-                  </div>
-                </div>
+              <div className="bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col items-center text-center">
+                <img 
+                  src={test.img} 
+                  alt={test.alt}
+                  className="w-full h-auto object-contain rounded-[32px]"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           ))}
@@ -204,6 +153,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 };
 
 export default function App() {
+  const [showVideo, setShowVideo] = useState(false);
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -233,7 +183,7 @@ export default function App() {
                 <span className="text-primary"> sem você perceber.</span>
               </h1>
               
-              {/* Stories Format Video Container - MOVED BELOW HEADLINE */}
+              {/* Stories Format Video Container with Facade for Performance */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -241,15 +191,30 @@ export default function App() {
                 transition={{ duration: 0.8 }}
                 className="max-w-[320px] md:max-w-[380px] mx-auto rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-6 border-white bg-white mb-8"
               >
-                <div className="aspect-[9/16] relative bg-gray-100">
-                  <iframe
-                    src="https://fast.wistia.net/embed/iframe/0s6b4hcast?videoFoam=true"
-                    title="Vídeo de Apresentação"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full"
-                  />
+                <div className="aspect-[9/16] relative bg-gray-100 group cursor-pointer">
+                  {showVideo ? (
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/0s6b4hcast?videoFoam=true&autoPlay=true"
+                      title="Vídeo de Apresentação"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
+                  ) : (
+                    <div 
+                      onClick={() => setShowVideo(true)}
+                      className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-linear-to-b from-primary/10 to-primary/20"
+                    >
+                      <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
+                      </div>
+                      <span className="mt-4 font-black text-primary text-sm uppercase tracking-widest bg-white/80 px-4 py-2 rounded-full backdrop-blur-sm">
+                        Assistir Vídeo 👋
+                      </span>
+                      {/* Fake Thumbnail background for facade */}
+                      <div className="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=400')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity" />
+                    </div>
+                  )}
                 </div>
               </motion.div>
 
@@ -314,8 +279,8 @@ export default function App() {
         </div>
       </section>
       {/* 4. SOLUTION - SUMMARIZED */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-6 mb-16">
+      <section className="py-12 md:py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 mb-12 md:mb-16">
           <div className="max-w-5xl mx-auto">
             <a href="https://ibb.co/5ggXxxLP" target="_blank" rel="noopener noreferrer">
               <img 
@@ -323,6 +288,8 @@ export default function App() {
                 alt="Guia de Alimentação Natural" 
                 className="w-full rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border-8 border-white bg-white hover:opacity-95 transition-opacity"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -401,7 +368,7 @@ export default function App() {
       </section>
 
       {/* 6. SOCIAL PROOF (Testimonials) - MOVED BEFORE PRICING */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div {...fadeIn} className="mb-16">
              <h2 className="font-sans text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter">
@@ -567,7 +534,7 @@ export default function App() {
       </section>
 
       {/* 8. FAQ */}
-      <section className="py-20 bg-bg-alt">
+      <section className="py-12 md:py-20 bg-bg-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div {...fadeIn} className="text-center mb-12">
@@ -597,7 +564,7 @@ export default function App() {
       </section>
 
       {/* 9. GUARANTEE */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-2xl">
           <motion.div {...fadeIn} className="flex items-center gap-6 bg-[#FFFBEB] p-8 rounded-[12px] border border-[#FEF3C7] shadow-sm">
             <span className="text-5xl">🛡️</span>
