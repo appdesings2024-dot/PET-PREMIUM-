@@ -4,10 +4,9 @@
  */
 
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { 
   CheckCircle2, 
-  ChevronDown, 
   ShieldCheck, 
   Star, 
   AlertCircle
@@ -77,35 +76,6 @@ const Button = ({ children, variant = 'primary', size = 'lg', className = '', on
     >
       {children}
     </button>
-  );
-};
-
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border-b border-primary/10 last:border-0">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between py-6 text-left focus:outline-none"
-      >
-        <span className="font-serif text-lg md:text-xl font-medium text-text-main">{question}</span>
-        <ChevronDown className={`h-5 w-5 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-text-secondary leading-relaxed">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
   );
 };
 
@@ -482,36 +452,6 @@ export default function App() {
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* 9. FAQ */}
-      <section className="py-12 md:py-20 bg-bg-alt">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <motion.div {...fadeIn} className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-text-main">Dúvidas Frequentes</h2>
-            </motion.div>
-            
-            <motion.div {...fadeIn} className="bg-white rounded-[20px] p-4 md:p-8 shadow-sm">
-              <FAQItem 
-                question="Precisa ser veterinário para usar?" 
-                answer="Não! O material foi desenvolvido justamente para tutores que não têm conhecimento técnico. As receitas são simples, seguras e usam ingredientes que você já encontra no mercado." 
-              />
-              <FAQItem 
-                question="Funciona para qualquer raça e tamanho?" 
-                answer="Sim! O guia inclui uma calculadora de porções (no Plano Premium) e orientações por peso que servem desde o menor Chihuahua até o maior São Bernardo." 
-              />
-              <FAQItem 
-                question="Como vou receber o material?" 
-                answer="A entrega é imediata via link enviado automaticamente para o seu e-mail assim que o pagamento for aprovado. O formato é digital (PDF)." 
-              />
-              <FAQItem 
-                question="E se eu não gostar?" 
-                answer="Fique tranquilo! Você tem uma garantia incondicional de 14 dias. Se por qualquer motivo não sentir que é para você, basta pedir o reembolso." 
-              />
-            </motion.div>
-          </div>
         </div>
       </section>
 
