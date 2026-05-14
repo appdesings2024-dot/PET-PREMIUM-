@@ -290,8 +290,8 @@ export default function App() {
       <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
-            <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter">
-              🐶 Tudo para cuidar melhor da saúde do seu cão ❤️
+            <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter uppercase">
+              🐶 TUDO PARA CUIDAR MELHOR DA SAÚDE DO SEU CÃO ❤️
             </h2>
           </motion.div>
           
@@ -308,8 +308,7 @@ export default function App() {
                 key={idx}
                 {...fadeIn}
                 transition={{ delay: idx * 0.05 }}
-                onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
-                className="p-8 bg-bg-alt rounded-[32px] border border-gray-100 flex flex-col items-start text-left hover:shadow-xl hover:border-primary/30 hover:scale-[1.02] transition-all cursor-pointer group"
+                className="p-8 bg-bg-alt rounded-[32px] border border-gray-100 flex flex-col items-start text-left hover:shadow-xl hover:border-primary/30 hover:scale-[1.02] transition-all group"
               >
                 <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
                   {item.icon}
@@ -337,10 +336,14 @@ export default function App() {
 
              <div className="grid sm:grid-cols-2 gap-6">
                 {[
-                  { title: "Calculadora de Porções", desc: "Nunca mais tenha dúvida de quanto o seu pet deve comer.", icon: "⚖️" },
-                  { title: "Guia de Sintomas", desc: "Saiba quando algo não está bem com a saúde do seu cão.", icon: "🐕" },
-                  { title: "Lista de Compras", desc: "Economize no mercado com a lista certa para a semana.", icon: "🛒" },
-                  { title: "Grupo VIP WhatsApp", desc: "Dicas semanais exclusivas para melhorar a rotina.", icon: "💬" }
+                  { title: "Calculadora de Porções", desc: "Descubra a quantidade ideal de alimento para o porte do seu cão.", icon: "⚖️" },
+                  { title: "Guia de Sintomas de Alerta", desc: "Aprenda a identificar sinais que muitos donos ignoram.", icon: "🐕" },
+                  { title: "Lista Inteligente de Compras", desc: "Economize tempo e dinheiro na rotina da semana.", icon: "🛒" },
+                  { title: "Grupo VIP no WhatsApp", desc: "Receba dicas práticas e conteúdos exclusivos.", icon: "💬" },
+                  { title: "Rotina Saudável para Cães", desc: "Melhore a energia, sono, disposição e bem-estar do seu pet.", icon: "🦴" },
+                  { title: "Adestramento Fácil", desc: "Comandos básicos e dicas práticas para o dia a dia.", icon: "🎾" },
+                  { title: "SOS Cachorro", desc: "Guia de Emergências em Casa para agir rápido.", icon: "🎁" },
+                  { title: "Cão Ansioso", desc: "Guia do Tutor Desesperado para acalmar seu pet.", icon: "🎁" }
                 ].map((bonus, idx) => (
                   <div key={idx} 
                     onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
@@ -419,58 +422,104 @@ export default function App() {
               {...fadeIn} 
               className="bg-white p-1 bg-linear-to-br from-primary to-highlight rounded-[42px] shadow-[0_20px_60px_rgba(34,197,94,0.15)] relative scale-105"
             >
-              <div className="bg-white p-10 rounded-[40px] h-full flex flex-col relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-primary text-white py-2 px-10 rounded-bl-[20px] text-xs font-black uppercase tracking-widest animate-pulse">
-                  MAIS COMPRADO
+              <div className="bg-white p-6 md:p-10 rounded-[40px] h-full flex flex-col items-center text-center relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-primary text-white py-2 px-10 rounded-b-[20px] text-[10px] md:text-xs font-black uppercase tracking-widest animate-pulse whitespace-nowrap">
+                  🔥 MAIS ESCOLHIDO PELOS TUTORES
                 </div>
                 
-                <div className="mb-8">
+                <div className="mb-6 mt-8">
                   <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Completo + Bônus</span>
                   <h3 className="font-display text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
                 </div>
 
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-gray-400 line-through text-lg font-bold">R$ 47,90</span>
-                    <span className="bg-highlight/10 text-highlight text-[10px] font-black px-2 py-0.5 rounded-full uppercase">ECONOMIA 60%</span>
+                <div className="mb-6">
+                  <div className="flex flex-col items-center gap-1 mb-1">
+                    <span className="text-gray-400 line-through text-lg font-bold">DE R$ 75,90</span>
+                    <span className="text-highlight text-sm font-black uppercase">por apenas</span>
                   </div>
-                  <div className="text-6xl font-black text-primary flex items-baseline gap-2">
-                    <span className="text-2xl">R$</span>19,90
+                  <div className="text-5xl md:text-6xl font-black text-primary flex items-baseline justify-center gap-2 leading-none">
+                    <span className="text-2xl">R$</span>19,90 <span className="text-xl uppercase">HOJE</span>
                   </div>
-                  <p className="text-text-secondary text-sm font-medium mt-1">Tudo do Básico + 6 Bônus de Valor</p>
+                  <p className="text-highlight text-xs font-black mt-3 uppercase tracking-tight flex items-center justify-center gap-2">
+                    <AlertCircle className="w-3 h-3" />
+                    ⚠️ Oferta promocional + bônus liberados somente hoje
+                  </p>
                 </div>
 
-                <ul className="space-y-4 mb-10 text-left w-full flex-grow">
+                <div className="flex flex-col items-center gap-3 mb-8">
                   {[
-                    "<b>Cardápio Natural</b> 7 dias",
-                    "<b>25 Receitas</b> Diversificadas",
-                    "<b>Calculadora de Porções</b> Automática",
-                    "<b>Lista de Compras</b> Inteligente",
-                    "<b>Guia VIP de Sintomas</b> de Alerta",
-                    "Acesso ao <b>Grupo VIP WhatsApp</b>",
-                    "🎁 <b>BÔNUS: SOS Cachorro</b> — Guia de Emergências em Casa",
-                    "🎁 <b>BÔNUS: Cão Ansioso</b> — Guia do Tutor Desesperado",
-                    "🏆 <b>Concorre ao Kit Mimo Mensal</b> — Coleira + Petisco + Brinquedo + Caminha"
+                    "Tudo do Plano Básico",
+                    "Acesso vitalício",
+                    "Atualizações futuras inclusas"
                   ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-4 text-text-main font-medium py-1">
-                      <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                      <span dangerouslySetInnerHTML={{ __html: item }} className="text-base md:text-lg leading-snug" />
-                    </li>
+                    <div key={idx} className="flex items-center gap-2 text-primary font-bold text-sm">
+                      <CheckCircle2 className="w-4 h-4 fill-primary text-white" />
+                      <span>{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
-                <Button 
-                  variant="primary" 
-                  className="w-full py-5 shadow-2xl flex flex-col h-auto"
-                  onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
-                >
-                  <span className="text-xl mb-0.5">🔥 ACESSAR AGORA</span>
-                  <span className="text-xs font-bold opacity-90 tracking-tight">⭐ Melhor custo-benefício</span>
-                </Button>
+                <div className="mb-6 w-full">
+                  <h4 className="text-text-main font-black text-xs uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                    <span>🐶</span> O QUE VOCÊ RECEBE NO PREMIUM:
+                  </h4>
+                  <ul className="space-y-3 text-center w-full">
+                    {[
+                      { icon: "📅", text: "<b>Cardápio Natural Completo</b> — 7 Dias" },
+                      { icon: "🥣", text: "<b>35 Receitas Naturais</b> Diversificadas" },
+                      { icon: "⚖️", text: "<b>Calculadora Automática</b> de Porções" },
+                      { icon: "🛒", text: "<b>Lista Inteligente</b> de Compras" },
+                      { icon: "🚨", text: "<b>Guia VIP</b> de Sintomas de Alerta" },
+                      { icon: "💬", text: "Acesso ao <b>Grupo VIP WhatsApp</b>" },
+                      { icon: "🦴", text: "<b>Guia de Rotina Saudável</b> para Cães" },
+                      { icon: "🎾", text: "Mini Guia de <b>Adestramento Fácil</b>" },
+                      { icon: "💰", text: "Dicas para <b>economizar</b> na alimentação" },
+                      { icon: "✅", text: "Lista completa do que <b>PODE e NÃO PODE</b>" }
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex flex-col items-center gap-1 text-text-main font-medium py-0.5">
+                        <span className="text-base">{item.icon}</span>
+                        <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-sm md:text-base leading-tight" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mb-8 pt-6 border-t border-gray-100 w-full">
+                  <h4 className="text-highlight font-black text-xs uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
+                    <span>🎁</span> BÔNUS EXCLUSIVOS DE HOJE:
+                  </h4>
+                  <ul className="space-y-3">
+                    {[
+                      { icon: "🚑", text: "<b>SOS Cachorro</b> — Emergências em Casa" },
+                      { icon: "😰", text: "<b>Cão Ansioso</b> — Guia do Tutor Desesperado" },
+                      { icon: "🏆", text: "<b>Sorteio Mensal:</b> Coleira + Brinquedos..." },
+                      { icon: "🎁", text: "<b>BÔNUS SURPRESA</b> PÓS-COMPRA" }
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex flex-col items-center gap-1 bg-highlight/5 p-3 rounded-xl border border-highlight/10">
+                        <span className="text-xl">{item.icon}</span>
+                        <span dangerouslySetInnerHTML={{ __html: item.text }} className="text-xs md:text-sm font-bold text-text-main" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-auto w-full">
+                  <div className="mb-4 text-center">
+                    <p className="text-text-secondary text-xs italic">🛡️ Garantia de 7 dias. Teste sem risco.</p>
+                  </div>
+                  
+                  <Button 
+                    variant="primary" 
+                    className="w-full py-5 shadow-2xl flex items-center justify-center h-auto animate-bounce-subtle"
+                    onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
+                  >
+                    <span className="text-lg md:text-xl uppercase">🔥 QUERO ACESSAR AGORA MESMO</span>
+                  </Button>
+                </div>
                 
-                <div className="mt-6 flex items-center justify-center gap-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                <div className="mt-4 flex items-center justify-center gap-2 text-[9px] text-gray-400 font-bold uppercase tracking-widest">
                   <ShieldCheck className="w-3 h-3" />
-                  Pagamento 100% Seguro e Criptografado
+                  Ambiente 100% Seguro e Criptografado
                 </div>
               </div>
             </motion.div>
