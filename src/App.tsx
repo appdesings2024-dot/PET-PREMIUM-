@@ -404,10 +404,7 @@ export default function App() {
                   ))}
                 </ul>
 
-                <div className="mb-6 w-full">
-                  <h4 className="text-text-main font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <span>🐶</span> O QUE VOCÊ RECEBE NO PREMIUM:
-                  </h4>
+                <div className="mb-6 w-full mt-8">
                   <ul className="space-y-4 text-left w-full">
                     {[
                       { icon: "📅", text: "<b>Cardápio Natural Completo</b> — 7 Dias" },
