@@ -178,9 +178,9 @@ export default function App() {
           {/* Main Content Stack */}
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-10 md:gap-16">
             <motion.div {...fadeIn}>
-              <h1 className="font-display text-3xl md:text-5xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-10 tracking-tighter text-center uppercase">
-                <span className="text-text-main">Seu cachorro pode estar sofrendo com a alimentação…</span><br className="hidden md:block" />
-                <span className="text-primary"> sem você perceber.</span>
+              <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-10 tracking-tighter text-center uppercase">
+                <span className="text-text-main">Aprenda +35 receitas naturais que ajudam seu cão a ter </span><br className="hidden md:block" />
+                <span className="text-primary">mais disposição, pelos bonitos e melhor digestão.</span>
               </h1>
               
               {/* Stories Format Video Container with Facade for Performance */}
