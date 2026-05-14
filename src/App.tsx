@@ -179,43 +179,28 @@ export default function App() {
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-10 md:gap-16">
             <motion.div {...fadeIn}>
               <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-10 tracking-tighter text-center uppercase">
-                <span className="text-text-main">Aprenda +35 receitas naturais que ajudam seu cão a ter </span><br className="hidden md:block" />
+                <span className="text-text-main">Aprenda mais de 300 receitas naturais que ajudam seu cão a ter </span><br className="hidden md:block" />
                 <span className="text-primary">mais disposição, pelos bonitos e melhor digestão.</span>
               </h1>
               
-              {/* Stories Format Video Container with Facade for Performance */}
+              {/* Product Image Moved Here */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="max-w-[320px] md:max-w-[380px] mx-auto rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-6 border-white bg-white mb-8"
+                className="max-w-5xl mx-auto mb-8"
               >
-                <div className="aspect-[9/16] relative bg-gray-100 group cursor-pointer">
-                  {showVideo ? (
-                    <iframe
-                      src="https://fast.wistia.net/embed/iframe/0s6b4hcast?videoFoam=true&autoPlay=true"
-                      title="Vídeo de Apresentação"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      className="absolute inset-0 w-full h-full"
-                    />
-                  ) : (
-                    <div 
-                      onClick={() => setShowVideo(true)}
-                      className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-linear-to-b from-primary/10 to-primary/20"
-                    >
-                      <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-300">
-                        <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
-                      </div>
-                      <span className="mt-4 font-black text-primary text-sm uppercase tracking-widest bg-white/80 px-4 py-2 rounded-full backdrop-blur-sm">
-                        Assistir Vídeo 👋
-                      </span>
-                      {/* Fake Thumbnail background for facade */}
-                      <div className="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=400')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity" />
-                    </div>
-                  )}
-                </div>
+                <a href="https://ibb.co/5ggXxxLP" target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src="https://i.ibb.co/FLLkqqzF/Chat-GPT-Image-13-de-mai-de-2026-23-20-04.png" 
+                    alt="Guia de Alimentação Natural" 
+                    className="w-full rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border-8 border-white bg-white hover:opacity-95 transition-opacity"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
               </motion.div>
 
               <p className="text-base md:text-xl text-text-secondary leading-relaxed mb-6 max-w-3xl mx-auto font-medium">
@@ -280,20 +265,6 @@ export default function App() {
       </section>
       {/* 4. SOLUTION - SUMMARIZED */}
       <section className="py-12 md:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 mb-12 md:mb-16">
-          <div className="max-w-5xl mx-auto">
-            <a href="https://ibb.co/5ggXxxLP" target="_blank" rel="noopener noreferrer">
-              <img 
-                src="https://i.ibb.co/FLLkqqzF/Chat-GPT-Image-13-de-mai-de-2026-23-20-04.png" 
-                alt="Guia de Alimentação Natural" 
-                className="w-full rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border-8 border-white bg-white hover:opacity-95 transition-opacity"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-        </div>
         <div className="container mx-auto px-6 text-center">
           <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
             <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter uppercase">
@@ -305,7 +276,7 @@ export default function App() {
             {[
               { title: "Cardápio completo para 7 dias", desc: "Nunca mais fique sem saber o que preparar para seu cão.", icon: "📅", color: "bg-green-50" },
               { title: "Lista oficial do que PODE e NÃO PODE", desc: "Evite alimentos perigosos e cuide do seu pet com mais segurança.", icon: "✅", color: "bg-amber-50" },
-              { title: "35 receitas práticas e naturais", desc: "Receitas simples, nutritivas e fáceis até para iniciantes.", icon: "🥣", color: "bg-blue-50" },
+              { title: "300 receitas práticas e naturais", desc: "Receitas simples, nutritivas e fáceis até para iniciantes.", icon: "🥣", color: "bg-blue-50" },
               { title: "Quantidade ideal por peso", desc: "Saiba exatamente quanto seu cão deve comer sem exageros.", icon: "⚖️", color: "bg-purple-50" },
               { title: "Guia de sintomas de alerta", desc: "Aprenda a identificar sinais que muitos donos ignoram.", icon: "🚨", color: "bg-red-50" },
               { title: "Dicas para economizar na alimentação", desc: "Alimente melhor seu pet sem gastar fortunas no mercado.", icon: "💰", color: "bg-emerald-50" }
@@ -472,7 +443,7 @@ export default function App() {
                   <ul className="space-y-4 text-left w-full">
                     {[
                       { icon: "📅", text: "<b>Cardápio Natural Completo</b> — 7 Dias" },
-                      { icon: "🥣", text: "<b>35 Receitas Naturais</b> Diversificadas" },
+                      { icon: "🥣", text: "<b>300 Receitas Naturais</b> Diversificadas" },
                       { icon: "⚖️", text: "<b>Calculadora Automática</b> de Porções" },
                       { icon: "🛒", text: "<b>Lista Inteligente</b> de Compras" },
                       { icon: "🚨", text: "<b>Guia VIP</b> de Sintomas de Alerta" },
