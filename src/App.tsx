@@ -206,7 +206,7 @@ export default function App() {
           {/* Main Content Stack */}
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-10 md:gap-16">
             <motion.div {...fadeIn}>
-              <h1 className="font-sans text-3xl md:text-5xl lg:text-6xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase text-center">
+              <h1 className="font-display text-3xl md:text-5xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-10 tracking-tighter text-center uppercase">
                 <span className="text-text-main">Seu cachorro pode estar sofrendo com a alimentação…</span><br className="hidden md:block" />
                 <span className="text-primary"> sem você perceber.</span>
               </h1>
@@ -259,7 +259,7 @@ export default function App() {
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="font-sans text-2xl md:text-4xl font-black text-text-main mb-4 uppercase tracking-tighter leading-tight">
+            <h2 className="font-display text-2xl md:text-4xl font-black text-text-main mb-4 uppercase tracking-tighter leading-tight">
               🚨 Muitos sinais ignorados pelos donos podem <span className="text-highlight">estar ligados à alimentação:</span>
             </h2>
           </motion.div>
@@ -289,34 +289,37 @@ export default function App() {
       {/* 4. SOLUTION - SUMMARIZED */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <motion.div {...fadeIn} className="max-w-3xl mx-auto mb-12">
-            <h2 className="font-sans text-3xl md:text-5xl font-black text-text-main mb-6 uppercase tracking-tighter">
-              Tudo o que você <span className="text-primary italic">precisa</span>
+          <motion.div {...fadeIn} className="max-w-4xl mx-auto mb-12">
+            <h2 className="font-display text-2xl md:text-5xl font-black text-text-main mb-6 tracking-tighter">
+              🐶 Tudo para cuidar melhor da saúde do seu cão ❤️
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              { title: "7 dias de cardápio", icon: "📅", color: "bg-green-50" },
-              { title: "Guia pode/não pode", icon: "✅", color: "bg-amber-50" },
-              { title: "25 receitas práticas", icon: "🥣", color: "bg-blue-50" },
-              { title: "Porções por peso", icon: "⚖️", color: "bg-purple-50" },
-              { title: "Sintomas de alerta", icon: "🚨", color: "bg-red-50" },
-              { title: "Dicas de economia", icon: "💰", color: "bg-emerald-50" }
+              { title: "Cardápio completo para 7 dias", desc: "Nunca mais fique sem saber o que preparar para seu cão.", icon: "📅", color: "bg-green-50" },
+              { title: "Lista oficial do que PODE e NÃO PODE", desc: "Evite alimentos perigosos e cuide do seu pet com mais segurança.", icon: "✅", color: "bg-amber-50" },
+              { title: "35 receitas práticas e naturais", desc: "Receitas simples, nutritivas e fáceis até para iniciantes.", icon: "🥣", color: "bg-blue-50" },
+              { title: "Quantidade ideal por peso", desc: "Saiba exatamente quanto seu cão deve comer sem exageros.", icon: "⚖️", color: "bg-purple-50" },
+              { title: "Guia de sintomas de alerta", desc: "Aprenda a identificar sinais que muitos donos ignoram.", icon: "🚨", color: "bg-red-50" },
+              { title: "Dicas para economizar na alimentação", desc: "Alimente melhor seu pet sem gastar fortunas no mercado.", icon: "💰", color: "bg-emerald-50" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
                 {...fadeIn}
                 transition={{ delay: idx * 0.05 }}
-                onClick={() => window.open(CHECKOUT_BASIC_URL, '_blank')}
-                className="p-6 bg-bg-alt rounded-[24px] border border-gray-100 flex flex-col items-center hover:shadow-lg hover:border-primary/30 hover:scale-105 transition-all cursor-pointer active:scale-95"
+                onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
+                className="p-8 bg-bg-alt rounded-[32px] border border-gray-100 flex flex-col items-start text-left hover:shadow-xl hover:border-primary/30 hover:scale-[1.02] transition-all cursor-pointer group"
               >
-                <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center text-2xl mb-4`}>
+                <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
                   {item.icon}
                 </div>
-                <h3 className="font-sans text-xs md:text-sm font-black text-text-main uppercase tracking-tight">
+                <h3 className="font-display text-lg font-black text-text-main mb-2 leading-tight">
                   {item.title}
                 </h3>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -374,42 +377,41 @@ export default function App() {
         <div className="container mx-auto px-4">
           <motion.div {...fadeIn} className="text-center mb-20">
             <span className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4 block">Investimento na Saúde</span>
-            <h2 className="font-sans text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter italic">Escolha o seu plano</h2>
-            <p className="text-text-secondary max-w-xl mx-auto text-lg">Acesso vitalício ao material. Você paga uma vez e tem saúde para sempre.</p>
+            <h2 className="font-display text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic text-text-main">⚠️ Oferta promocional válida somente hoje.</h2>
+            <p className="text-text-secondary max-w-xl mx-auto text-lg font-bold">Os bônus podem sair do ar a qualquer momento.</p>
           </motion.div>
 
 
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto items-stretch">
             {/* Basic Plan */}
-            <motion.div {...fadeIn} className="bg-white p-10 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col hover:border-primary/20 transition-all duration-300">
-              <div className="mb-8">
+            <motion.div {...fadeIn} className="bg-white p-8 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col hover:border-primary/20 transition-all duration-300 self-center">
+              <div className="mb-6">
                 <span className="text-gray-400 font-bold uppercase text-xs tracking-widest block mb-1">Iniciante</span>
-                <h3 className="font-sans text-3xl font-black text-text-main uppercase">Plano Básico</h3>
+                <h3 className="font-display text-2xl font-black text-text-main uppercase">Plano Básico</h3>
               </div>
               
-              <div className="mb-8">
-                <div className="text-5xl font-black text-primary flex items-baseline gap-2">
-                  <span className="text-2xl">R$</span>10,00
+              <div className="mb-6">
+                <div className="text-4xl font-black text-primary flex items-baseline gap-2">
+                  <span className="text-xl">R$</span>10,00
                 </div>
                 <p className="text-text-secondary text-sm font-medium mt-1">Acesso vitalício ao PDF</p>
               </div>
 
-              <ul className="space-y-4 mb-10 text-left w-full flex-grow">
+              <ul className="space-y-3 mb-6 text-left w-full">
                 {[
                   "Cardápio semanal (7 dias)",
-                  "Tabela oficial PODE/NÃO PODE",
                   "10 Receitas super práticas",
                   "Guia básico de pesagem",
                   "Entrega digital garantida"
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-text-main font-medium">
                     <CheckCircle2 className="w-5 h-5 text-gray-300 flex-shrink-0" />
-                    <span>{item}</span>
+                    <span className="text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
               
-              <Button variant="secondary" className="w-full py-5 text-lg">Quero o Básico</Button>
+              <Button variant="secondary" className="w-full py-4 text-base">Quero o Básico</Button>
             </motion.div>
 
             {/* Premium Plan - COMPLETE & EYE CATCHING */}
@@ -424,7 +426,7 @@ export default function App() {
                 
                 <div className="mb-8">
                   <span className="text-primary font-bold uppercase text-xs tracking-widest block mb-1">Completo + Bônus</span>
-                  <h3 className="font-sans text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
+                  <h3 className="font-display text-3xl font-black text-text-main uppercase">Combo Premium 💎</h3>
                 </div>
 
                 <div className="mb-8">
@@ -459,10 +461,11 @@ export default function App() {
 
                 <Button 
                   variant="primary" 
-                  className="w-full py-6 text-xl shadow-2xl"
+                  className="w-full py-5 shadow-2xl flex flex-col h-auto"
                   onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
                 >
-                  QUERO GARANTIR O PREMIUM
+                  <span className="text-xl mb-0.5">🔥 ACESSAR AGORA</span>
+                  <span className="text-xs font-bold opacity-90 tracking-tight">⭐ Melhor custo-benefício</span>
                 </Button>
                 
                 <div className="mt-6 flex items-center justify-center gap-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
