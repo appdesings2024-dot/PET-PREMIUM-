@@ -206,21 +206,18 @@ export default function App() {
           {/* Main Content Stack */}
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-10 md:gap-16">
             <motion.div {...fadeIn}>
-              <h1 className="font-sans text-3xl md:text-6xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase text-center">
-                <span className="text-primary">Alimentação natural para cães:</span><br className="hidden md:block" />
-                <span className="text-text-main"> o guia que sua veterinária não te deu</span>
+              <h1 className="font-sans text-3xl md:text-5xl lg:text-6xl font-black leading-tight md:leading-[1.1] mb-6 md:mb-8 tracking-tighter uppercase text-center">
+                <span className="text-text-main">Seu cachorro pode estar sofrendo com a alimentação…</span><br className="hidden md:block" />
+                <span className="text-primary"> sem você perceber.</span>
               </h1>
-              <p className="text-base md:text-2xl text-text-secondary leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto font-medium">
-                Cardápios prontos, receitas simples e tudo organizado pra você começar hoje — sem medo de errar e sem gastar fortuna.
-              </p>
               
-              {/* Stories Format Video Container - MOVED HERE */}
+              {/* Stories Format Video Container - MOVED BELOW HEADLINE */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="max-w-[320px] md:max-w-[380px] mx-auto rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-6 border-white bg-white mb-10"
+                className="max-w-[320px] md:max-w-[380px] mx-auto rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] border-4 md:border-6 border-white bg-white mb-8"
               >
                 <div className="aspect-[9/16] relative bg-gray-100">
                   <iframe
@@ -234,8 +231,23 @@ export default function App() {
                 </div>
               </motion.div>
 
+              <p className="text-base md:text-xl text-text-secondary leading-relaxed mb-6 max-w-3xl mx-auto font-medium">
+                Descubra receitas naturais simples e práticas que já ajudaram mais de 1.347 donos a melhorar a saúde, energia e qualidade de vida dos seus cães.
+              </p>
+              
+              <div className="flex flex-col items-center gap-1 mb-8 md:mb-12">
+                <div className="flex gap-1 text-highlight">
+                  <Star className="w-5 h-5 fill-highlight" />
+                  <Star className="w-5 h-5 fill-highlight" />
+                  <Star className="w-5 h-5 fill-highlight" />
+                  <Star className="w-5 h-5 fill-highlight" />
+                  <Star className="w-5 h-5 fill-highlight" />
+                </div>
+                <span className="text-sm font-bold text-text-secondary">+1.347 avaliações positivas</span>
+              </div>
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button variant="primary" className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto">QUERO GARANTIR AGORA</Button>
+                <Button variant="primary" className="w-full sm:min-w-[280px] text-lg md:text-xl py-5 shadow-2xl uppercase tracking-tight h-[60px] md:h-auto">🔥 QUERO CUIDAR MELHOR DO MEU CÃO</Button>
                 <Button variant="secondary" className="w-full sm:px-10 h-[60px] md:h-auto" onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })}>Conhecer os planos</Button>
               </div>
             </motion.div>
@@ -243,8 +255,37 @@ export default function App() {
         </div>
       </section>
 
-      {/* PAIN POINTS REMOVED AS REQUESTED */}
-
+      {/* 3. PAIN POINTS */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div {...fadeIn} className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="font-sans text-2xl md:text-4xl font-black text-text-main mb-4 uppercase tracking-tighter leading-tight">
+              🚨 Muitos sinais ignorados pelos donos podem <span className="text-highlight">estar ligados à alimentação:</span>
+            </h2>
+          </motion.div>
+          
+          <div className="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              "coceira frequente",
+              "queda de pelo",
+              "gases",
+              "falta de energia",
+              "intestino irregular",
+              "perda de apetite"
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                {...fadeIn}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-bg-alt p-5 rounded-2xl border border-gray-100 flex items-center gap-3 font-bold text-text-main hover:border-highlight/20 transition-all shadow-sm"
+              >
+                <span className="text-xl">❌</span>
+                <span className="uppercase tracking-tight">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* 4. SOLUTION - SUMMARIZED */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
@@ -267,7 +308,8 @@ export default function App() {
                 key={idx}
                 {...fadeIn}
                 transition={{ delay: idx * 0.05 }}
-                className="p-6 bg-bg-alt rounded-[24px] border border-gray-100 flex flex-col items-center hover:shadow-md transition-all"
+                onClick={() => window.open(CHECKOUT_BASIC_URL, '_blank')}
+                className="p-6 bg-bg-alt rounded-[24px] border border-gray-100 flex flex-col items-center hover:shadow-lg hover:border-primary/30 hover:scale-105 transition-all cursor-pointer active:scale-95"
               >
                 <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center text-2xl mb-4`}>
                   {item.icon}
@@ -287,7 +329,7 @@ export default function App() {
           <div className="max-w-4xl mx-auto">
              <motion.div {...fadeIn} className="text-center mb-12">
                <span className="text-highlight font-bold text-lg mb-2 block uppercase tracking-tighter">Exclusivo Premium 💎</span>
-               <h2 className="font-serif text-3xl md:text-5xl font-bold text-text-main uppercase tracking-tighter">Bônus Inclusos Hoje</h2>
+               <h2 className="font-serif text-3xl md:text-5xl font-bold text-text-main uppercase tracking-tighter">🎁 BÔNUS EXCLUSIVOS LIBERADOS HOJE</h2>
              </motion.div>
 
              <div className="grid sm:grid-cols-2 gap-6">
@@ -297,8 +339,11 @@ export default function App() {
                   { title: "Lista de Compras", desc: "Economize no mercado com a lista certa para a semana.", icon: "🛒" },
                   { title: "Grupo VIP WhatsApp", desc: "Dicas semanais exclusivas para melhorar a rotina.", icon: "💬" }
                 ].map((bonus, idx) => (
-                  <div key={idx} className="bg-white p-7 rounded-[24px] flex gap-4 border border-highlight/20 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="text-3xl">{bonus.icon}</div>
+                  <div key={idx} 
+                    onClick={() => window.open(CHECKOUT_PREMIUM_URL, '_blank')}
+                    className="bg-white p-7 rounded-[24px] flex gap-4 border border-highlight/20 shadow-sm hover:shadow-lg hover:border-highlight/40 hover:scale-105 transition-all cursor-pointer active:scale-95 group"
+                  >
+                    <div className="text-3xl group-hover:scale-110 transition-transform">{bonus.icon}</div>
                     <div>
                       <h4 className="font-bold text-text-main text-lg uppercase tracking-tight">{bonus.title}</h4>
                       <p className="text-text-secondary text-sm leading-relaxed">{bonus.desc}</p>
